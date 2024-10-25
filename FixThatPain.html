@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix That Pain</title>
+  <!-- Link to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+  <!-- jQuery and Bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <!-- Image Map Resizer script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+  <style>
+    /* Main body style */
+    body {
+      background-color: #4E7D8C;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    /* Logo styling */
+    #logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 225px;
+      margin: 20px;
+      height: auto;
+    }
+
+
+    /* Pain text section styling */
+    #PainText {
+      width: 60%;
+      margin: 150px auto 20px; 
+      color: white;
+      font-family: 'Jockey One', sans-serif;
+      text-decoration: underline;
+    }
+
+    /* Font size for pain and muscle select text */
+    #PainText p,
+    #MuscleSelect p {
+      font-size: 120px;
+      margin: 0;
+    }
+
+    /* Muscle selection section styling */
+    #MuscleSelect {
+      width: 30%;
+      margin: 70px auto; 
+      color: white;
+      font-family: 'Nanum Myeongjo', serif;
+    }
+
+    #MuscleSelect p {
+      font-size: 55px;
+      margin: 0;
+    }
+
+    /* Container for human picture */
+    #HumanPicContainer {
+      text-align: center;
+      margin: auto;
+    }
+
+    /* Human picture styling */
+    #HumanPic {
+      width: 90%; 
+      max-width: 1120px;
+      height: auto;
+    }
+
+    /* Loading icon styling */
+    .loading-icon {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+      z-index: 1000;
+    }
+
+    /* Animation for loading icon */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 1024px) {
+      #PainText p, #MuscleSelect p {
+        font-size: 60px;
+      }
+
+      #HumanPic {
+        width: 100%;
+      }
+
+      #logo {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #PainText p, #MuscleSelect p {
+        font-size: 50px;
+      }
+
+      #logo {
+        width: 125px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #PainText p, #MuscleSelect p {
+        font-size: 40px;
+      }
+
+      #MuscleSelect {
+        width: 80%;
+      }
+
+      #logo {
+        width: 100px;
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <img src="https://s3.amazonaws.com/www.tuk29023.com/LogoFinal.png" id="logo" alt="Logo">
+
+  <!-- Pain text section -->
+  <div id="PainText">
+    <p class="jockey-one-regular">WHERE IS YOUR PAIN?</p>
+  </div>
+
+  <!-- Muscle selection section -->
+  <div id="MuscleSelect">
+    <p class="nanum-myeongjo-regular">Select your desired muscle</p>
+  </div>
+
+  <!-- Human picture with image map -->
+  <div id="HumanPicContainer">
+    <img src="https://s3.amazonaws.com/www.tuk29023.com/HumanFinal.png" usemap="#image-map" id="HumanPic" alt="Human Map">
+
+
+    <map name="image-map">
+      <area target="_self" alt="Chest" title="Chest" href="#" coords="189,215,203,213,214,198,220,185,233,170,246,164,263,161,278,157,290,156,295,160,301,164,310,161,321,156,333,156,342,156,356,160,375,178,386,201,397,202,400,209,391,218,382,228,373,238,361,244,335,246,312,227,303,218,298,225,289,234,283,238,274,241,262,243,255,246,243,245,230,240,219,225,212,216" shape="poly" onclick="console.log('Chest clicked'); fetchMuscleCode('Chest')">
+      <area target="_self" alt="Shoulder" title="Shoulder" href="#" coords="169,215,173,200,176,186,183,172,200,161,218,155,233,154,247,155,251,158,244,164,229,182,221,191,215,198,204,205,191,213,185,216" shape="poly" onclick="fetchMuscleCode('Shoulder')">
+      <area target="_self" alt="Shoulder" title="Shoulder" href="#" coords="352,159,359,164,378,178,386,191,393,199,404,205,413,211,424,215,436,215,433,199,426,184,416,169,405,160,396,154,385,151,376,151,360,151,352,151,347,155" shape="poly" onclick="fetchMuscleCode('Shoulder')">
+      <area target="_self" alt="Shoulder" title="Shoulder" href="#" coords="739,205,748,182,756,169,768,163,791,155,811,156,819,162,818,171,811,174,799,185,792,192,781,196,775,201,766,204,758,205,748,203" shape="poly" onclick="fetchMuscleCode('Shoulder')">
+      <area target="_self" alt="Shoulder" title="Shoulder" href="#" coords="918,169,928,175,937,181,949,192,960,198,968,203,983,207,996,209,1002,207,995,194,986,179,975,168,965,158,955,154,948,151,935,150,923,156" shape="poly" onclick="fetchMuscleCode('Shoulder')">
+      <area target="_self" alt="Oblique" title="Oblique" href="#" coords="227,370,228,346,232,322,225,295,215,267,211,253,210,231,210,220,230,235,240,248,252,260,259,268,262,278,259,297,257,311,258,332,257,345,254,362,242,370,227,380" shape="poly" onclick="fetchMuscleCode('Oblique')">
+      <area target="_self" alt="Oblique" title="Oblique" href="#" coords="343,354,344,333,347,325,347,317,345,304,343,294,344,284,342,269,388,223,390,234,391,246,386,271,394,256,381,285,373,302,369,318,370,340,372,352,371,361,375,372,369,375,359,370,351,369" shape="poly" onclick="fetchMuscleCode('Oblique')">
+      <area target="_self" alt="Trap" title="Trap" href="#" coords="231,149,245,139,258,135,268,131,274,133,272,138,271,148,262,153,252,154,243,153,236,152" shape="poly" onclick="fetchMuscleCode('Trap')">
+      <area target="_self" alt="Trap" title="Trap" href="#" coords="332,130,329,143,333,150,344,156,353,151,369,149,356,141,348,138" shape="poly" onclick="fetchMuscleCode('Trap')">
+      <area target="_self" alt="Trap" title="Trap" href="#" coords="800,151,809,144,823,139,836,136,850,136,882,138,901,137,913,139,926,142,934,146,943,147,934,152,923,157,915,163,907,172,880,170,865,170,852,170,840,173,829,172,818,167,812,158" shape="poly" onclick="fetchMuscleCode('Trap')">
+      <area target="_self" alt="Bicep" title="Bicep" href="#" coords="141,281,147,261,154,243,164,226,173,221,188,216,202,216,210,222,210,233,205,256,191,268,180,286,170,295,155,299,148,298,143,291" shape="poly" onclick="fetchMuscleCode('Bicep')">
+      <area target="_self" alt="Bicep" title="Bicep" href="#" coords="401,217,429,217,443,227,451,239,453,247,456,258,459,271,462,284,458,293,446,300,433,296,421,282,403,266,394,243,394,224" shape="poly" onclick="fetchMuscleCode('Bicep')">
+      <area target="_self" alt="Forearm" title="Forearm" href="#" coords="79,378,96,344,105,311,120,289,133,280,141,274,144,292,154,301,163,299,172,297,159,319,156,328,148,338,138,347,128,360,118,370,110,382,100,389,91,390,83,389" shape="poly" onclick="fetchMuscleCode('Forearm')">
+      <area target="_self" alt="Forearm" title="Forearm" href="#" coords="435,302,442,321,451,334,468,351,478,361,491,368,496,379,501,388,513,388,524,382,517,361,501,319,486,298,473,280,463,268,462,279,461,289,457,295,452,298" shape="poly" onclick="fetchMuscleCode('Forearm')">
+      <area target="_self" alt="Forearm" title="Forearm" href="#" coords="647,394,656,356,673,308,690,289,699,278,715,279,722,282,724,291,727,297,734,300,731,306,725,315,718,328,713,338,701,352,691,367,681,377,674,385,667,392,659,396" shape="poly" onclick="fetchMuscleCode('Forearm')">
+      <area target="_self" alt="Forearm" title="Forearm" href="#" coords="1000,295,1008,311,1019,326,1033,351,1042,359,1052,371,1064,384,1070,395,1083,398,1091,389,1084,357,1074,330,1057,306,1040,280,1034,271,1031,278,1023,276,1015,286,1014,296,1008,296" shape="poly" onclick="fetchMuscleCode('Forearm')">
+      <area target="_self" alt="Abs" title="Abs" href="#" coords="277,399,266,354,265,313,261,253,269,244,286,240,295,239,301,243,309,240,315,239,323,238,337,247,343,253,342,263,340,276,339,304,335,335,336,356,332,378,326,398,312,411,304,418,295,417" shape="poly" onclick="fetchMuscleCode('Abs')">
+      <area target="_self" alt="Groin" title="Groin" href="#" coords="230,375,243,398,245,419,247,442,255,472,259,498,265,516,269,530,276,542,290,526,297,488,304,469,283,446,280,435,277,417,265,397,254,388,246,381" shape="poly" onclick="fetchMuscleCode('Groin')">
+      <area target="_self" alt="Quad" title="Quad" href="#" coords="321,545,334,527,343,495,349,465,351,428,361,395,372,383,377,397,381,425,387,450,392,475,394,503,394,542,389,562,386,587,381,596,370,598,363,605,360,616,344,618,331,605,328,588,325,567" shape="poly" onclick="fetchMuscleCode('Quad')">
+      <area target="_self" alt="Groin" title="Groin" href="#" coords="320,540,308,508,302,465,317,455,321,434,328,410,336,402,352,385,364,380,362,393,353,421,352,447,345,497,342,519" shape="poly" onclick="fetchMuscleCode('Groin')">
+      <area target="_self" alt="Quad" title="Quad" href="#" coords="228,378,221,417,213,448,204,511,211,558,213,586,216,594,229,597,234,598,238,608,246,615,255,616,266,606,274,584,278,557,279,545,259,509,258,488,257,451,247,424,245,401,234,384" shape="poly" onclick="fetchMuscleCode('Quad')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="209,756,203,722,199,688,203,652,212,634,220,634,216,656,211,667,211,684,210,698,209,728" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Tibialis" title="Tibialis" href="#" coords="223,641,231,650,238,652,238,663,240,674,236,686,236,700,233,718,231,736,228,755,226,767,224,777,209,765,210,739,210,714,212,677,216,654" shape="poly" onclick="fetchMuscleCode('Tibialis')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="227,767,232,736,241,653,253,647,255,667,258,698,247,728,241,747,235,766" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="393,747,390,714,388,686,385,656,385,636,391,634,398,659,400,673,400,702" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Tibialis" title="Tibialis" href="#" coords="383,636,384,661,386,684,389,710,391,742,388,754,380,754,370,739,365,704,365,654" shape="poly" onclick="fetchMuscleCode('Tibialis')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="378,751,368,740,365,697,361,650,348,646,347,672,342,699,358,725,360,741" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="349,646,346,663,342,687,344,704,350,713,356,724,358,734,368,724,372,702,369,682,368,665,366,648" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="388,634,375,647,377,661,380,681,381,700,385,713,389,725,394,731,402,703,401,670,395,642" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Tricep" title="Tricep" href="#" coords="707,272,715,249,727,219,745,211,757,205,771,204,774,212,773,224,774,231,774,244,766,254,759,265,753,275,747,284,743,288,728,294,720,282,707,279" shape="poly" onclick="fetchMuscleCode('Tricep')">
+      <area target="_self" alt="Tricep" title="Tricep" href="#" coords="964,206,964,219,960,234,959,245,965,254,979,266,987,280,998,290,1006,294,1013,292,1015,278,1030,275,1029,254,1019,229,1008,208,994,203,981,203" shape="poly" onclick="fetchMuscleCode('Tricep')">
+      <area target="_self" alt="Lat" title="Lat" href="#" coords="794,382,796,353,798,310,779,262,777,234,773,202,782,192,805,181,821,166,836,190,859,253,857,271,848,295,836,323,834,336,832,354,832,362" shape="poly" onclick="fetchMuscleCode('Lat')">
+      <area target="_self" alt="Lat" title="Lat" href="#" coords="881,262,885,234,898,203,906,187,916,173,929,178,943,187,955,199,964,209,961,226,961,244,959,252,953,272,943,288,941,308,939,323,940,351,941,367,941,375,943,382,924,376,915,373,907,364,906,347,907,324,899,305,885,282" shape="poly" onclick="fetchMuscleCode('Lat')">
+      <area target="_self" alt="MidBack" title="MidBack" href="#" coords="840,199,825,171,850,170,876,168,896,171,908,171,912,175,904,186,897,201,893,214,889,227,881,243,875,260,865,267,853,235,848,220" shape="poly" onclick="fetchMuscleCode('MidBack')">
+      <area target="_self" alt="LowBack" title="LowBack" href="#" coords="833,362,835,341,835,322,842,309,849,282,862,259,868,267,879,259,880,276,889,293,900,313,904,334,903,346,903,361,910,365,895,365,888,367,881,371,876,378,870,380,861,375,856,367,847,366,839,366" shape="poly" onclick="fetchMuscleCode('LowBack')">
+      <area target="_self" alt="Glute" title="Glute" href="#" coords="800,438,805,405,813,375,836,367,853,369,870,384,876,375,886,369,904,370,928,378,930,393,935,405,937,416,937,428,935,439,931,446,927,456,917,460,898,462,882,464,868,458,854,460,842,461,829,461,813,459,801,447" shape="poly" onclick="fetchMuscleCode('Glute')">
+      <area target="_self" alt="Hammy" title="Hammy" href="#" coords="808,377,795,392,791,405,786,429,776,467,776,540,781,583,787,599,789,605,793,610,803,602,811,586,814,608,816,617,831,622,862,506,853,494,849,477,850,468,845,462,827,458,808,454,801,442,799,427" shape="poly" onclick="fetchMuscleCode('Hammy')">
+      <area target="_self" alt="Hammy" title="Hammy" href="#" coords="928,376,945,390,947,405,957,444,961,474,963,501,964,522,963,546,959,568,955,587,951,601,945,610,935,602,930,591,925,586,924,601,921,612,917,618,904,612,897,591,891,554,884,524,879,508,886,477,897,462,922,456,937,449,942,425,939,402,932,387" shape="poly" onclick="fetchMuscleCode('Hammy')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="766,718,766,682,771,656,776,644,788,652,800,659,813,659,823,662,825,673,828,702,825,718,818,738,802,734,800,717,791,718,780,733,772,729" shape="poly" onclick="fetchMuscleCode('Calf')">
+      <area target="_self" alt="Calf" title="Calf" href="#" coords="917,663,912,689,913,709,913,725,920,734,934,734,941,717,947,722,954,731,963,733,970,722,975,703,973,684,970,670,967,652,958,646,948,658,938,660,927,658" shape="poly" onclick="fetchMuscleCode('Calf')">
+    </map>
+  </div>
+
+  <!-- Loading icon -->
+  <div id="loadingIcon" class="loading-icon"></div>
+
+  <!-- Template for the new page structure -->
+  <template id="newPageTemplate">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Stretches</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+      <style>
+        body {
+          background-color: #4E7D8C;
+          margin: 0;
+          padding: 0;
+          font-family: 'Arial', sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-top: 100px; 
+        }
+
+        #logo {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 225px;
+          margin: 20px;
+          height: auto;
+        }
+
+        #backButton {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: white;
+      background-color: #4E7D8C;
+      border: 2px solid white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Jockey One', sans-serif;
+    }
+
+        #MuscleTitle {
+          text-align: center;
+          color: white;
+          font-family: 'Jockey One', sans-serif;
+          position: relative;
+          margin-bottom: 10px;
+          margin-top: 40px; 
+        }
+
+        #MuscleTitle p {
+          font-size: 128px;
+          font-weight: 400;
+          text-decoration: underline;
+          margin: 5px;
+        }
+
+        #Stretch1, #Stretch2, #Stretch3 {
+          text-align: center;
+          color: #4E7D8C;
+          font-family: 'Jockey One', sans-serif;
+          position: relative;
+          margin: 30px 0;
+        }
+
+        #Stretch1 p, #Stretch2 p, #Stretch3 p {
+          font-size: 54px;
+          font-weight: 400;
+          background-color: #f8f5f5;
+          padding: 15px;
+          border-radius: 20px;
+          display: inline-block;
+          margin: 0;
+        }
+
+        iframe {
+          width: 1120px;
+          height: 630px;
+          margin: 20px 0;
+        }
+
+        /* Media Query for mobile devices */
+        @media (max-width: 768px) {
+          #MuscleTitle {
+            margin-top: 80px; /* Increase top margin for more space on mobile */
+          }
+
+          #MuscleTitle p {
+            font-size: 48px;
+          }
+
+          #Stretch1 p, #Stretch2 p, #Stretch3 p {
+            font-size: 24px;
+          }
+
+          iframe {
+            width: 100%;
+            height: 100vw; /* Make the height equal to the width for square videos */
+          }
+
+          body {
+            padding: 10px;
+            padding-top: 120px; /* Add more top padding for mobile to prevent overlap */
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <a href="https://d10jza8atbot3a.cloudfront.net/FixThatPain.html">
+        <img src="https://s3.amazonaws.com/www.tuk29023.com/LogoFinal.png" id="logo">
+      </a>
+
+      <a href="https://d10jza8atbot3a.cloudfront.net/FixThatPain.html" id="backButton">Back</a>
+      <!-- Dynamic content will be injected here -->
+      <div id="dynamicContent"></div>
+    </body>
+    </html>
+  </template>
+
+  <script>
+    // Function to fetch and display the muscle-specific content
+    function fetchMuscleCode(muscle) {
+      var loadingIcon = document.getElementById('loadingIcon');
+      loadingIcon.style.display = 'block'; // Show loading icon
+
+      const endpointAddressMuscle = 'https://h40wcb5mva.execute-api.us-east-1.amazonaws.com/default/muscle3';
+
+      // Perform AJAX GET request to fetch muscle-specific content
+      $.get(endpointAddressMuscle, { 'muscle': muscle }, function(data) {
+        const template = document.getElementById('newPageTemplate').content.cloneNode(true);
+        template.querySelector('#dynamicContent').innerHTML = data;
+
+        // Replace current body content with the new content
+        document.body.innerHTML = '';
+        document.body.appendChild(template);
+
+        window.scrollTo(0, 0); // Scroll to top after new content is loaded
+        loadingIcon.style.display = 'none'; // Hide loading icon
+      })
+      .fail(function(error) {
+        console.error('Error:', error);
+        loadingIcon.style.display = 'none'; // Hide loading icon if there's an error
+      });
+    }
+
+    // Initialize image map resizer after the image has fully loaded
+    function initializeImageMap() {
+      $('map').imageMapResize();
+    }
+
+    // Ensure the image map resizer is applied correctly
+    $(document).ready(function() {
+      $('#HumanPic').on('load', initializeImageMap);
+    });
+  </script>
+</body>
+</html>
