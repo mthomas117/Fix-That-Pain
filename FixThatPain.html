@@ -14,131 +14,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <!-- Image Map Resizer script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
-  <style>
-    /* Main body style */
-    body {
-      background-color: #4E7D8C;
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-    }
 
-    /* Logo styling */
-    #logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 225px;
-      margin: 20px;
-      height: auto;
-    }
+   <!-- Your custom CSS -->
+   <link rel="stylesheet" href="css/app.css" />
+  
+
+   <!-- Your custom JavaScript -->
+   <script src="js/app.js"></script>
+
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
 
 
-    /* Pain text section styling */
-    #PainText {
-      width: 60%;
-      margin: 150px auto 20px; 
-      color: white;
-      font-family: 'Jockey One', sans-serif;
-      text-decoration: underline;
-    }
-
-    /* Font size for pain and muscle select text */
-    #PainText p,
-    #MuscleSelect p {
-      font-size: 120px;
-      margin: 0;
-    }
-
-    /* Muscle selection section styling */
-    #MuscleSelect {
-      width: 30%;
-      margin: 70px auto; 
-      color: white;
-      font-family: 'Nanum Myeongjo', serif;
-    }
-
-    #MuscleSelect p {
-      font-size: 55px;
-      margin: 0;
-    }
-
-    /* Container for human picture */
-    #HumanPicContainer {
-      text-align: center;
-      margin: auto;
-    }
-
-    /* Human picture styling */
-    #HumanPic {
-      width: 90%; 
-      max-width: 1120px;
-      height: auto;
-    }
-
-    /* Loading icon styling */
-    .loading-icon {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #3498db;
-      width: 120px;
-      height: 120px;
-      animation: spin 2s linear infinite;
-      z-index: 1000;
-    }
-
-    /* Animation for loading icon */
-    @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    /* Media Queries for Responsive Design */
-    @media (max-width: 1024px) {
-      #PainText p, #MuscleSelect p {
-        font-size: 60px;
-      }
-
-      #HumanPic {
-        width: 100%;
-      }
-
-      #logo {
-        width: 150px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      #PainText p, #MuscleSelect p {
-        font-size: 50px;
-      }
-
-      #logo {
-        width: 125px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      #PainText p, #MuscleSelect p {
-        font-size: 40px;
-      }
-
-      #MuscleSelect {
-        width: 80%;
-      }
-
-      #logo {
-        width: 100px;
-        margin: 10px;
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Logo -->
@@ -153,6 +41,18 @@
   <div id="MuscleSelect">
     <p class="nanum-myeongjo-regular">Select your desired muscle</p>
   </div>
+
+  <div id="ImpairmentSection" style="text-align: center; margin-top: 20px;">
+    <p class="nanum-myeongjo-regular">Do you have a physical impairment?</p>
+    <button 
+      id="impairmentButton" 
+      class="button-style" 
+      onclick= "location.href='indeximpair.html'"
+      style="padding: 10px 20px; font-size: 16px; background-color: #000000; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Click Here for Impairment Options
+    </button>
+  </div>
+
 
   <!-- Human picture with image map -->
   <div id="HumanPicContainer">
@@ -218,153 +118,131 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
       <style>
-        body {
-          background-color: #4E7D8C;
-          margin: 0;
-          padding: 0;
-          font-family: 'Arial', sans-serif;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding-top: 100px; 
-        }
+       /* Main body style */
+body {
+  background: linear-gradient(135deg, #4E7D8C, #2A5166) no-repeat;
+  background-size: cover;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensure the gradient covers the full screen */
+  box-sizing: border-box;
+  padding-bottom: 50px; /* Add spacing at the bottom */
+}
 
-        #logo {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 225px;
-          margin: 20px;
-          height: auto;
-        }
+/* Logo styling */
+#logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 225px;
+  height: auto;
+  z-index: 10; /* Keep the logo always on top */
+}
 
-        #backButton {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
-      color: white;
-      background-color: #4E7D8C;
-      border: 2px solid white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-family: 'Jockey One', sans-serif;
-    }
+/* Back button styling */
+#backButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: white;
+  background-color: #4E7D8C;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: 'Jockey One', sans-serif;
+}
 
-        #MuscleTitle {
-          text-align: center;
-          color: white;
-          font-family: 'Jockey One', sans-serif;
-          position: relative;
-          margin-bottom: 10px;
-          margin-top: 40px; 
-        }
+/* Muscle title styling */
+#MuscleTitle {
+  text-align: center;
+  color: white;
+  font-family: 'Jockey One', sans-serif;
+  position: relative;
+  margin-top: 160px; /* Add more spacing at the top */
+  margin-bottom: 10px;
+  z-index: 2;
+}
 
-        #MuscleTitle p {
-          font-size: 128px;
-          font-weight: 400;
-          text-decoration: underline;
-          margin: 5px;
-        }
+#MuscleTitle p {
+  font-size: 128px;
+  font-weight: 400;
+  text-decoration: underline;
+  margin: 5px;
+}
 
-        #Stretch1, #Stretch2, #Stretch3 {
-          text-align: center;
-          color: #4E7D8C;
-          font-family: 'Jockey One', sans-serif;
-          position: relative;
-          margin: 30px 0;
-        }
+/* Stretch section styling */
+#Stretch1, #Stretch2, #Stretch3 {
+  text-align: center;
+  color: #4E7D8C;
+  font-family: 'Jockey One', sans-serif;
+  position: relative;
+  margin: 40px 0; /* Add spacing between stretches */
+}
 
-        #Stretch1 p, #Stretch2 p, #Stretch3 p {
-          font-size: 54px;
-          font-weight: 400;
-          background-color: #f8f5f5;
-          padding: 15px;
-          border-radius: 20px;
-          display: inline-block;
-          margin: 0;
-        }
+#Stretch1 p, #Stretch2 p, #Stretch3 p {
+  font-size: 54px;
+  font-weight: 400;
+  background-color: #f8f5f5;
+  padding: 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0;
+}
 
-        iframe {
-          width: 1120px;
-          height: 630px;
-          margin: 20px 0;
-        }
+/* iFrame styling */
+iframe {
+  width: 1120px;
+  aspect-ratio: 16 / 9; /* Maintain proportional width and height */
+  margin: 20px 0;
+}
 
-        /* Media Query for mobile devices */
-        @media (max-width: 768px) {
-          #MuscleTitle {
-            margin-top: 80px; /* Increase top margin for more space on mobile */
-          }
+/* Media Query for mobile devices */
+@media (max-width: 768px) {
+  #MuscleTitle {
+    margin-top: 100px;
+  }
 
-          #MuscleTitle p {
-            font-size: 48px;
-          }
+  #MuscleTitle p {
+    font-size: 48px;
+  }
 
-          #Stretch1 p, #Stretch2 p, #Stretch3 p {
-            font-size: 24px;
-          }
+  #Stretch1 p, #Stretch2 p, #Stretch3 p {
+    font-size: 24px;
+  }
 
-          iframe {
-            width: 100%;
-            height: 100vw; /* Make the height equal to the width for square videos */
-          }
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
 
-          body {
-            padding: 10px;
-            padding-top: 120px; /* Add more top padding for mobile to prevent overlap */
-          }
-        }
+  body {
+    padding-top: 120px;
+    padding: 10px;
+  }
+}
+
+
       </style>
     </head>
     <body>
-      <a href="https://d10jza8atbot3a.cloudfront.net/FixThatPain.html">
-        <img src="https://s3.amazonaws.com/www.tuk29023.com/LogoFinal.png" id="logo">
+      <a href="https://mis3502-thomas7.s3.us-east-1.amazonaws.com/FixThatPain/index.html">
+        <img src="https://s3.amazonaws.com/www.tuk29023.com/LogoFinal.png" id="logo" alt="Logo">
       </a>
 
-      <a href="https://d10jza8atbot3a.cloudfront.net/FixThatPain.html" id="backButton">Back</a>
+      <a href="https://mis3502-thomas7.s3.us-east-1.amazonaws.com/FixThatPain/index.html" id="backButton">Back</a>
       <!-- Dynamic content will be injected here -->
       <div id="dynamicContent"></div>
     </body>
     </html>
   </template>
-
-  <script>
-    // Function to fetch and display the muscle-specific content
-    function fetchMuscleCode(muscle) {
-      var loadingIcon = document.getElementById('loadingIcon');
-      loadingIcon.style.display = 'block'; // Show loading icon
-
-      const endpointAddressMuscle = 'https://h40wcb5mva.execute-api.us-east-1.amazonaws.com/default/muscle3';
-
-      // Perform AJAX GET request to fetch muscle-specific content
-      $.get(endpointAddressMuscle, { 'muscle': muscle }, function(data) {
-        const template = document.getElementById('newPageTemplate').content.cloneNode(true);
-        template.querySelector('#dynamicContent').innerHTML = data;
-
-        // Replace current body content with the new content
-        document.body.innerHTML = '';
-        document.body.appendChild(template);
-
-        window.scrollTo(0, 0); // Scroll to top after new content is loaded
-        loadingIcon.style.display = 'none'; // Hide loading icon
-      })
-      .fail(function(error) {
-        console.error('Error:', error);
-        loadingIcon.style.display = 'none'; // Hide loading icon if there's an error
-      });
-    }
-
-    // Initialize image map resizer after the image has fully loaded
-    function initializeImageMap() {
-      $('map').imageMapResize();
-    }
-
-    // Ensure the image map resizer is applied correctly
-    $(document).ready(function() {
-      $('#HumanPic').on('load', initializeImageMap);
-    });
-  </script>
+  
 </body>
 </html>
