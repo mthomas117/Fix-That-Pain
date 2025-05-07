@@ -1,0 +1,199 @@
+/* Main body style */
+body {
+  background: linear-gradient(135deg, #4E7D8C, #2A5166) no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  font-family: 'Jockey One', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensure the gradient covers the full screen */
+  text-align: center;
+}
+
+/* Logo styling */
+#logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  margin: 20px;
+  height: auto;
+}
+
+/* Pain text section styling */
+#PainText {
+  width: 60%;
+  margin: 150px auto 20px;
+  color: white;
+  text-decoration: underline;
+}
+
+#PainText p {
+  font-size: 120px;
+  margin: 0;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Muscle selection section styling */
+#MuscleSelect {
+  width: 30%;
+  margin: 70px auto;
+  color: white;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+#MuscleSelect p {
+  font-size: 55px;
+  margin: 0;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Impairment section styling */
+#ImpairmentSection {
+  width: 40%;
+  margin: 30px auto;
+  color: white;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+#ImpairmentSection p {
+  font-size: 45px;
+  margin: 0 0 20px; /* Add space below the question */
+  text-align: center;
+}
+
+/* Button styling */
+#impairmentButton {
+  display: inline-block;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 30px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#impairmentButton:hover {
+  background-color: #1769aa;
+}
+
+/* Container for human picture */
+#HumanPicContainer {
+  text-align: center;
+  margin: auto;
+}
+
+/* Human picture styling */
+#HumanPic {
+  width: 90%;
+  max-width: 1120px;
+  height: auto;
+}
+
+/* Loading icon styling */
+.loading-icon {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  z-index: 1000;
+}
+
+/* Animation for loading icon */
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Fade-in animation for text */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  #PainText p,
+  #MuscleSelect p {
+    font-size: 60px;
+  }
+
+  #ImpairmentSection p {
+    font-size: 35px;
+  }
+
+  #impairmentButton {
+    font-size: 20px;
+  }
+
+  #HumanPic {
+    width: 100%;
+  }
+
+  #logo {
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  #PainText p,
+  #MuscleSelect p {
+    font-size: 50px;
+  }
+
+  #ImpairmentSection p {
+    font-size: 30px;
+  }
+
+  #impairmentButton {
+    font-size: 18px;
+  }
+
+  #logo {
+    width: 125px;
+  }
+}
+
+@media (max-width: 480px) {
+  #PainText p,
+  #MuscleSelect p {
+    font-size: 40px;
+  }
+
+  #MuscleSelect {
+    width: 80%;
+  }
+
+  #ImpairmentSection p {
+    font-size: 25px;
+  }
+
+  #impairmentButton {
+    font-size: 16px;
+  }
+
+  #logo {
+    width: 100px;
+    margin: 10px;
+  }
+}
